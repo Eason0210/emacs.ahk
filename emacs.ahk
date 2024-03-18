@@ -22,6 +22,8 @@ if WinActive("ahk_class ConsoleWindowClass") ; Cygwin
     return 1
 if WinActive("ahk_exe Code.exe") ;vscode
     return 1
+if WinActive("ahk_exe devenv.exe") ; Visual Studio 2022
+    return 1
 if WinActive("ahk_class VMwareUnityHostWndClass") ; Avoid VMwareUnity with AutoHotkey
     return 1
 if WinActive("ahk_class mintty")
