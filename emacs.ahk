@@ -22,8 +22,8 @@ if WinActive("ahk_class ConsoleWindowClass") ; Cygwin
     return 1
 if WinActive("ahk_exe Code.exe") ;vscode
     return 1
-if WinActive("ahk_exe devenv.exe") ; Visual Studio 2022
-    return 1
+; if WinActive("ahk_exe devenv.exe") ; Visual Studio 2022
+;     return 1
 if WinActive("ahk_class VMwareUnityHostWndClass") ; Avoid VMwareUnity with AutoHotkey
     return 1
 if WinActive("ahk_class mintty")
@@ -601,25 +601,6 @@ if is_target()
 else
     Send "^{-}"
 }
-;; Toggle line comment C-x,C-;
-^;::
-{
-if is_target()
-    Send(A_ThisHotkey)
-else
-{
-    if IS_PRE_X
-    {
-        Send "^{k}"
-        Sleep 50
-        Send "^{/}"
-        next_line()
-        global IS_PRE_X := 0
-    }
-    else
-        Send(A_ThisHotkey)
-}
-}
 
 ;; Toggle Chinese and English input method in Emacs
 Shift::
@@ -637,5 +618,44 @@ Tab::Send "{Down}"
 #HotIf WinActive("ahk_exe devenv.exe")
 Tab::Send "{Down}"
 +Tab::Send "{Up}"
-^Space::Send "^{@}"
+;;^Space::Send "^{@}"
+
+;; Toggle line comment C-x,C-;
+^;::
+{
+if is_target()
+    Send(A_ThisHotkey)
+else
+{
+    if IS_PRE_X
+    {
+        Send "^{k}"
+        Sleep 50
+        Send "^{/}"
+        ; next_line()
+        global IS_PRE_X := 0
+    }
+    else
+        Send(A_ThisHotkey)
+}
+}
+
+f::
+{
+if is_target()
+    Send(A_ThisHotkey)
+else
+{
+    if IS_PRE_C
+    {
+        Send "^{k}"
+        Sleep 50
+        Send "^{d}"   
+        global IS_PRE_C := 0
+    }
+    else
+        Send(A_ThisHotkey)
+}
+}
+
 #HotIf
