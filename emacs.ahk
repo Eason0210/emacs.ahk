@@ -606,7 +606,7 @@ else
 Shift::
 {
 if WinActive("ahk_class Emacs") or WinActive("ahk_class  X410_XAppWin")
-    Send "^{\}"
+    Send "{f9}"
 }
 
 ;; Bind Tab and Shift+Tab to Up and Down in PolyWorks
