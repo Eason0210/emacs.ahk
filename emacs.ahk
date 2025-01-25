@@ -609,24 +609,21 @@ $CapsLock::
 global
 	SetStoreCapsLockMode(false)
 	ErrorLevel := !KeyWait("CapsLock", "T0.25")
-	if ErrorLevel
-		Send("{CapsLock}") ;; Long press
+	if ErrorLevel ;; Long press
+		Send("{CapsLock}")
 	else
-		{
+	{
 		ErrorLevel := !KeyWait("CapsLock", "D T0.5")
-		if ErrorLevel      ;; Single click
+		if ErrorLevel  ;; Single click
 		{
 			If WinActive("ahk_exe emacs.exe")
-			   Send ("{f9}")
+				Send ("{f9}")
 			else
-			   Send ("{RShift}")
-			   
-			   
-				
+				Send ("{RShift}")
 		}
-		else               ;; Double click
+		else  ;; Double click
 			Send("{CapsLock}")
-		}
+	}
 	ErrorLevel := !KeyWait("CapsLock")
 return
 }
