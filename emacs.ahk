@@ -603,14 +603,14 @@ else
 }
 
 ;; Toggle Chinese and English input method in Emacs
-CapsLock::
-{
-if WinActive("ahk_exe emacs.exe")
-    Send "{f9}"
-else
-    Send "{RShift}"
-}
 
+#HotIf WinActive("ahk_exe emacs.exe")
+CapsLock::Send "{f9}"
+
+#HotIf
+CapsLock::RShift
+
+f12::CapsLock
 
 ;; Bind Tab and Shift+Tab to Up and Down in PolyWorks
 #HotIf WinActive("ahk_exe iminspect.exe") or WinActive("ahk_exe polyworks.exe") or WinActive("ahk_exe imedit.exe")
